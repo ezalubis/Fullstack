@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import axios from "axios";
 
 export default function Home() {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3001/api/items")
+    fetch("http://localhost:3000/api/items")
       .then((response) => response.json())
       .then((items) => setItems(items));
   }, []);
@@ -30,9 +30,11 @@ export default function Home() {
                     })}
                   </h2>
                   <p>{item.description}</p>
-                  <button className="bg-blue-600 text-black rounded-lg">
-                    Buy Now
-                  </button>
+                  <Link to={`/items/${item.id}`}>
+                    <button className="bg-blue-600 text-black rounded-lg">
+                      Buy Now
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

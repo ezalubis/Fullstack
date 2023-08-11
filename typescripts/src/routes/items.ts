@@ -83,15 +83,14 @@ router.get("/", (_req, res) => {
   );
 });
 
-// satu berdasarkan ID
-// router.get("/:id", (req, res) => {
-//   const planet = items.find((p) => p.id === parseInt(req.params.id));
-//   if (planet) {
-//     res.json(planet);
-//   } else {
-//     res.status(404);
-//     res.send("Planet tidak ditemukan.");
-//   }
-// });
+router.get("/:id", (req, res) => {
+  const item = items.find((p) => p.id === parseInt(req.params.id));
+  if (item) {
+    res.json(item);
+  } else {
+    res.status(404);
+    res.send("Barang Tidak Ditemukan.");
+  }
+});
 
 export default router;
